@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using CitizenFX.Core;
 
 namespace RoundManager.Server
 {
-    internal static class Network
+    static class Network
     {
         private static readonly List<Player> network = new List<Player>();
         private static int Count => network.Count;
 
+        #region Methods
         public static void Add(Player player)
         {
             if (player == null)
@@ -38,5 +40,6 @@ namespace RoundManager.Server
         {
             return Count;
         }
+        #endregion
     }
 }

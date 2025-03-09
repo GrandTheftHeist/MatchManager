@@ -1,24 +1,16 @@
 ﻿using System;
 using System.Reflection;
-using System.Threading.Tasks;
 using CitizenFX.Core;
 
 namespace RoundManager.Server
 {
-    internal class ServerMain : BaseScript
+    internal class Main : BaseScript
     {
-        private readonly Round round;
-
-        public ServerMain()
+        public Main()
         {
-            round = new Round(Guid.NewGuid(), DateTime.Now, DateTime.Now.AddMinutes(5));
+            var currentRound = new Round(Guid.NewGuid(), DateTime.Now, DateTime.Now.AddMinutes(5));
 
-            Tick += RoundTick;
-        }
-
-        private async Task RoundTick()
-        {
-            await round.RoundTick();
+            Tick += currentRound.RoundTick;
         }
 
         #region EventHandlers
@@ -53,7 +45,7 @@ namespace RoundManager.Server
         {
             if (Network.GetCount() == 0)
             {
-                Debug.WriteLine("No players in the network.");
+                Debug.WriteLine("dead network.");
                 return;
             }
 
@@ -81,29 +73,6 @@ namespace RoundManager.Server
                     {
                         Debug.WriteLine($"{property.Name}: Error retrieving value - {ex.Message}");
                     }
-                }
-            }
-        }
-
-        [Command("listround")]
-        private void ListRound()
-        {
-            if (round == null)
-            {
-                Debug.WriteLine("No active round.");
-                return;
-            }
-
-            foreach (PropertyInfo property in round.GetType().GetProperties())
-            {
-                try
-                {
-                    var value = property.GetValue(round, null);
-                    Debug.WriteLine($"{property.Name}: {value}");
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine($"{property.Name}: Error retrieving value - {ex.Message}");
                 }
             }
         }

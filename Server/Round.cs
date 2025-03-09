@@ -6,17 +6,19 @@ namespace RoundManager.Server
 {
     internal class Round : BaseScript
     {
+        private Round currentRound;
+
         private Guid Id { get; set; }
         private DateTime StartTime { get; set; }
         private DateTime EndTime { get; set; }
-
-        private Round CurrentRound { get; set; }
 
         public Round(Guid id, DateTime startTime, DateTime endTime)
         {
             Id = id;
             StartTime = startTime;
             EndTime = endTime;
+
+            currentRound = this;
 
             Debug.WriteLine($"Round '{Id}' created. Start time '{StartTime}', end time '{EndTime}'.");
         }
@@ -25,19 +27,17 @@ namespace RoundManager.Server
         [Tick]
         public async Task RoundTick()
         {
-            await Delay(5000);
+            await Delay(1000);
 
             if (Network.GetCount() == 0)
             {
-                Debug.WriteLine("No players in the network.");
-
                 /**
                  * If there are no players in the network, we can skip the round check.
                  */
                 return;
             }
 
-            if (CurrentRound == null)
+            if (currentRound == null)
             {
                 Debug.WriteLine("No active round.");
 
@@ -50,7 +50,7 @@ namespace RoundManager.Server
                 return;
             }
 
-            if (DateTime.Now == CurrentRound.StartTime)
+            if (DateTime.Now == currentRound.StartTime)
             {
                 Debug.WriteLine("Round has started.");
 
@@ -61,7 +61,7 @@ namespace RoundManager.Server
                 return;
             }
 
-            if (DateTime.Now < CurrentRound.EndTime)
+            if (DateTime.Now < currentRound.EndTime)
             {
                 Debug.WriteLine("Round is still active.");
 
@@ -71,7 +71,7 @@ namespace RoundManager.Server
                 return;
             }
 
-            if (DateTime.Now >= CurrentRound.EndTime)
+            if (DateTime.Now >= currentRound.EndTime)
             {
                 Debug.WriteLine("Round has ended.");
 
@@ -81,17 +81,25 @@ namespace RoundManager.Server
                  * Set the new round as the current round.
                  */
 
-                CreateRound(DateTime.Now, DateTime.Now.AddMinutes(5));
+                await Delay(10000);
+
+                currentRound = null;
+
                 return;
             }
         }
         #endregion
 
         #region Methods
+        public Round GetRound()
+        {
+            return currentRound;
+        }
+
         private Round CreateRound(DateTime startTime, DateTime endTime)
         {
-            CurrentRound = new Round(Guid.NewGuid(), startTime, endTime);
-            return CurrentRound;
+            currentRound = new Round(Guid.NewGuid(), startTime, endTime);
+            return currentRound;
         }
         #endregion
     }
