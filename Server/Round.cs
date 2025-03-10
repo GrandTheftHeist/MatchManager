@@ -29,14 +29,6 @@ namespace RoundManager.Server
         {
             await Delay(1000);
 
-            if (Network.GetCount() == 0)
-            {
-                /**
-                 * If there are no players in the network, we can skip the round check.
-                 */
-                return;
-            }
-
             if (currentRound == null)
             {
                 /**
