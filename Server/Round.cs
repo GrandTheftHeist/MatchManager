@@ -39,8 +39,6 @@ namespace RoundManager.Server
 
             if (currentRound == null)
             {
-                Debug.WriteLine("No active round.");
-
                 /**
                  * Create a new round.
                  * Set the new round as the current round.
@@ -63,10 +61,10 @@ namespace RoundManager.Server
 
             if (DateTime.Now < currentRound.EndTime)
             {
-                Debug.WriteLine("Round is still active.");
+                Debug.WriteLine("Round is in progress.");
 
                 /**
-                 * Notify all citizens that the round is still active.
+                 * Notify all citizens that the round is in progress.
                  */
                 return;
             }
@@ -74,17 +72,12 @@ namespace RoundManager.Server
             if (DateTime.Now >= currentRound.EndTime)
             {
                 Debug.WriteLine("Round has ended.");
-
-                /**
-                 * Calculate the round results.
-                 * Create a new round.
-                 * Set the new round as the current round.
-                 */
-
+                Debug.WriteLine("Calculating round results...");
                 await Delay(10000);
 
                 currentRound = null;
-
+                Debug.WriteLine("Selecting next round...");
+                Debug.WriteLine("currentRound is null.");
                 return;
             }
         }
@@ -99,6 +92,12 @@ namespace RoundManager.Server
         private Round CreateRound(DateTime startTime, DateTime endTime)
         {
             currentRound = new Round(Guid.NewGuid(), startTime, endTime);
+
+            Network.Get().ForEach((player) =>
+            {
+                player.TriggerEvent("CORE_CL_ROUND_STARTED");
+            });
+
             return currentRound;
         }
         #endregion
