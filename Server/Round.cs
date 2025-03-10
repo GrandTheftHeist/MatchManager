@@ -36,7 +36,7 @@ namespace RoundManager.Server
                  * Set the new round as the current round.
                  */
 
-                CreateRound(DateTime.Now, DateTime.Now.AddMinutes(5));
+                CreateRound(DateTime.Now, DateTime.Now.AddSeconds(30));
                 return;
             }
 
@@ -65,8 +65,6 @@ namespace RoundManager.Server
             {
                 Debug.WriteLine("Round has ended.");
                 Debug.WriteLine("Calculating round results...");
-                await Delay(10000);
-
                 currentRound = null;
                 Debug.WriteLine("Selecting next round...");
                 Debug.WriteLine("currentRound is null.");
