@@ -6,7 +6,7 @@ namespace RoundManager.Server
 {
     internal class Round : BaseScript
     {
-        private Round currentRound;
+        private Round round;
 
         private Guid Id { get; set; }
         private DateTime StartTime { get; set; }
@@ -14,36 +14,33 @@ namespace RoundManager.Server
 
         public Round(Guid id, DateTime startTime, DateTime endTime)
         {
-            Id = id;
-            StartTime = startTime;
-            EndTime = endTime;
+            this.Id = id;
+            this.StartTime = startTime;
+            this.EndTime = endTime;
+            this.round = this;
 
-            currentRound = this;
-
-            Debug.WriteLine($"Round '{Id}' created. Start time '{StartTime}', end time '{EndTime}'.");
+            Debug.WriteLine($"\u001b[44;37m[INFO] Round '{Id}' created. Start time '{StartTime}', end time '{EndTime}'^7");
         }
 
         #region Tick
         [Tick]
-        public async Task RoundTick()
+        internal async Task RoundTick()
         {
             await Delay(1000);
 
-            if (currentRound == null)
+            if (this.round == null)
             {
                 /**
                  * Create a new round.
                  * Set the new round as the current round.
                  */
 
-                CreateRound(DateTime.Now, DateTime.Now.AddSeconds(30));
+                this.CreateRound(DateTime.Now, DateTime.Now.AddMinutes(2));
                 return;
             }
 
-            if (DateTime.Now == currentRound.StartTime)
+            if (DateTime.Now == this.round.StartTime)
             {
-                Debug.WriteLine("Round has started.");
-
                 /**
                  * Notify all teams that the round has started.
                  * Set the round as the current round.
@@ -51,44 +48,39 @@ namespace RoundManager.Server
                 return;
             }
 
-            if (DateTime.Now < currentRound.EndTime)
+            if (DateTime.Now < this.round.EndTime)
             {
-                Debug.WriteLine("Round is in progress.");
-
                 /**
                  * Notify all citizens that the round is in progress.
                  */
                 return;
             }
 
-            if (DateTime.Now >= currentRound.EndTime)
+            if (DateTime.Now >= this.round.EndTime)
             {
-                Debug.WriteLine("Round has ended.");
-                Debug.WriteLine("Calculating round results...");
-                currentRound = null;
-                Debug.WriteLine("Selecting next round...");
-                Debug.WriteLine("currentRound is null.");
+                Debug.WriteLine($"\u001b[44;37m[INFO] Round '{this.Id}' ended.^7");
+                Debug.WriteLine("\u001b[44;37m[INFO] Selecting next round...^7");
+                this.round = null;
                 return;
             }
         }
         #endregion
 
         #region Methods
-        public Round GetRound()
+        private void CreateRound(DateTime startTime, DateTime endTime)
         {
-            return currentRound;
-        }
+            this.round = new Round(Guid.NewGuid(), startTime, endTime);
 
-        private Round CreateRound(DateTime startTime, DateTime endTime)
-        {
-            currentRound = new Round(Guid.NewGuid(), startTime, endTime);
+            if (Network.GetCount() == 0)
+            {
+                Debug.WriteLine("\u001b[44;37m[INFO] dead network.^7");
+                return;
+            }
 
             Network.Get().ForEach((player) =>
             {
                 player.TriggerEvent("CORE_CL_ROUND_STARTED");
             });
-
-            return currentRound;
         }
         #endregion
     }

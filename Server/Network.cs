@@ -4,13 +4,12 @@ using CitizenFX.Core;
 
 namespace RoundManager.Server
 {
-    static class Network
+    internal class Network
     {
         private static readonly List<Player> network = new List<Player>();
-        private static int Count => network.Count;
 
         #region Methods
-        public static void Add(Player player)
+        internal static void Add(Player player)
         {
             if (player == null)
             {
@@ -20,7 +19,7 @@ namespace RoundManager.Server
             network.Add(player);
         }
 
-        public static void Remove(Player player)
+        internal static void Remove(Player player)
         {
             if (player == null)
             {
@@ -30,14 +29,14 @@ namespace RoundManager.Server
             network.Remove(player);
         }
 
-        public static List<Player> Get()
+        internal static List<Player> Get()
         {
             return network;
         }
 
-        public static int GetCount()
+        internal static int GetCount()
         {
-            return Count;
+            return network.Count;
         }
         #endregion
     }
