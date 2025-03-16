@@ -71,16 +71,10 @@ namespace RoundManager.Server
         {
             this.round = new Round(Guid.NewGuid(), startTime, endTime);
 
-            if (Network.GetCount() == 0)
-            {
-                Debug.WriteLine("\u001b[44;37m[INFO] dead network.^7");
-                return;
-            }
-
-            Network.Get().ForEach((player) =>
+            foreach (var player in Players)
             {
                 player.TriggerEvent("CORE_CL_ROUND_STARTED");
-            });
+            }
         }
         #endregion
     }
