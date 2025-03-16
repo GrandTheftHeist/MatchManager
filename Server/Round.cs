@@ -22,7 +22,7 @@ namespace RoundManager.Server
             Debug.WriteLine($"\u001b[44;37m[INFO] Round '{Id}' created. Start time '{StartTime}', end time '{EndTime}'^7");
         }
 
-        #region Tick
+        #region Ticks
         [Tick]
         internal async Task RoundTick()
         {
@@ -60,7 +60,13 @@ namespace RoundManager.Server
             {
                 Debug.WriteLine($"\u001b[44;37m[INFO] Round '{this.Id}' ended.^7");
                 Debug.WriteLine("\u001b[44;37m[INFO] Selecting next round...^7");
+
                 this.round = null;
+
+                TriggerEvent("BANK_SV_DOOR_CLOSE_BY_SERVER", 0, 1);
+                TriggerEvent("BANK_SV_DOOR_CLOSE_BY_SERVER", 0, 2);
+                TriggerEvent("BANK_SV_DOOR_CLOSE_BY_SERVER", 0, 3);
+
                 return;
             }
         }
