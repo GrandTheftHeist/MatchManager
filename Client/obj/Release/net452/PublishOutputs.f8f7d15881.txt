@@ -1,0 +1,2 @@
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\RoundManager\Client\bin\Release\net452\publish\RoundManager.Client.net.dll
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\RoundManager\Client\bin\Release\net452\publish\CitizenFX.Core.Client.dll

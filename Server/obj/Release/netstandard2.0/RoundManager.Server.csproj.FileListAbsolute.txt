@@ -1,0 +1,11 @@
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\RoundManager\Server\bin\Release\netstandard2.0\RoundManager.Server.deps.json
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\RoundManager\Server\bin\Release\netstandard2.0\RoundManager.Server.net.dll
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\RoundManager\Server\bin\Release\netstandard2.0\RoundManager.Server.net.pdb
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\RoundManager\Server\obj\Release\netstandard2.0\RoundManager.Server.csproj.AssemblyReference.cache
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\RoundManager\Server\obj\Release\netstandard2.0\RoundManager.Server.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\RoundManager\Server\obj\Release\netstandard2.0\RoundManager.Server.AssemblyInfoInputs.cache
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\RoundManager\Server\obj\Release\netstandard2.0\RoundManager.Server.AssemblyInfo.cs
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\RoundManager\Server\obj\Release\netstandard2.0\RoundManager.Server.csproj.CoreCompileInputs.cache
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\RoundManager\Server\obj\Release\netstandard2.0\RoundManager.Server.net.dll
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\RoundManager\Server\obj\Release\netstandard2.0\RoundManager.Server.net.pdb
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\RoundManager\Server\obj\Release\netstandard2.0\RoundManager.Server.sourcelink.json
