@@ -2,9 +2,9 @@ using CitizenFX.Core;
 
 namespace RoundManager.Client
 {
-    public class ClientMain : BaseScript
+    public class Main : BaseScript
     {
-        public ClientMain()
+        public Main()
         {
             Debug.WriteLine("Hi from RoundManager.Client!");
         }

@@ -7,7 +7,7 @@ namespace RoundManager.Server
     {
         public Main()
         {
-            var round = new Round(Guid.NewGuid(), DateTime.Now, DateTime.Now.AddSeconds(30));
+            var round = new Round(Guid.NewGuid(), DateTime.Now, DateTime.Now.AddSeconds(10));
 
             Tick += round.RoundTick;
         }

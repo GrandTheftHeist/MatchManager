@@ -35,7 +35,7 @@ namespace RoundManager.Server
                  * Set the new round as the current round.
                  */
 
-                this.CreateRound(DateTime.Now, DateTime.Now.AddMinutes(2));
+                this.CreateRound(DateTime.Now, DateTime.Now.AddMinutes(5));
                 return;
             }
 
