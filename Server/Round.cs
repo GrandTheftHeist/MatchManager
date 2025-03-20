@@ -22,11 +22,42 @@ namespace RoundManager.Server
             Debug.WriteLine($"\u001b[44;37m[INFO] Round '{Id}' created. Start time '{StartTime}', end time '{EndTime}'^7");
         }
 
-        #region Ticks
+        private void CreateRound(DateTime startTime, DateTime endTime)
+        {
+            try
+            {
+                this.round = new Round(Guid.NewGuid(), startTime, endTime);
+
+                var players = Players;
+                if (players == null)
+                {
+                    return;
+                }
+
+                foreach (var player in Players)
+                {
+                    player.State.Set("isPlaying", true, true);
+                    player.State.Set("isSpectating", false, true);
+
+                    player.TriggerEvent("CORE_CL_ROUND_STARTED");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"\u001b[41;37m[ERROR] {ex.Message}^7");
+            }
+        }
+
         [Tick]
         internal async Task RoundTick()
         {
             await Delay(1000);
+
+            var players = Players;
+            if (players == null)
+            {
+                return;
+            }
 
             if (this.round == null)
             {
@@ -53,6 +84,25 @@ namespace RoundManager.Server
                 /**
                  * Notify all citizens that the round is in progress.
                  */
+
+                foreach (var player in players)
+                {
+                    if (player.State.Get("isPlaying") == true)
+                    {
+                        continue;
+                    }
+
+                    if (player.State.Get("isSpectating") == true)
+                    {
+                        continue;
+                    }
+
+                    player.TriggerEvent("ROUNDMANAGER_CL_SPECTATE");
+
+                    player.State.Set("isPlaying", false, true);
+                    player.State.Set("isSpectating", true, true);
+                }
+
                 return;
             }
 
@@ -70,18 +120,5 @@ namespace RoundManager.Server
                 return;
             }
         }
-        #endregion
-
-        #region Methods
-        private void CreateRound(DateTime startTime, DateTime endTime)
-        {
-            this.round = new Round(Guid.NewGuid(), startTime, endTime);
-
-            foreach (var player in Players)
-            {
-                player.TriggerEvent("CORE_CL_ROUND_STARTED");
-            }
-        }
-        #endregion
     }
 }

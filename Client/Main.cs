@@ -1,12 +1,21 @@
+using System;
 using CitizenFX.Core;
+using CitizenFX.Core.Native;
 
 namespace RoundManager.Client
 {
-    public class Main : BaseScript
+    internal class Main : BaseScript
     {
         public Main()
         {
-            Debug.WriteLine("Hi from RoundManager.Client!");
+        }
+
+        [EventHandler("ROUNDMANAGER_CL_SPECTATE")]
+        private void OnSpectate()
+        {
+            Debug.WriteLine("Entering spectator mode.");
+
+            API.NetworkSetInSpectatorMode(true, Game.Player.Handle);
         }
     }
 }
