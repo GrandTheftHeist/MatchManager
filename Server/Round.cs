@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using CitizenFX.Core;
+using CitizenFX.Core.Native;
 
 namespace RoundManager.Server
 {
@@ -8,9 +9,11 @@ namespace RoundManager.Server
     {
         private Round round;
 
+        #region Properties
         private Guid Id { get; set; }
         private DateTime StartTime { get; set; }
         private DateTime EndTime { get; set; }
+        #endregion
 
         public Round(Guid id, DateTime startTime, DateTime endTime)
         {
@@ -22,6 +25,7 @@ namespace RoundManager.Server
             Debug.WriteLine($"\u001b[44;37m[INFO] Round '{Id}' created. Start time '{StartTime}', end time '{EndTime}'^7");
         }
 
+        #region Methods
         private void CreateRound(DateTime startTime, DateTime endTime)
         {
             try
@@ -36,7 +40,7 @@ namespace RoundManager.Server
 
                 foreach (var player in Players)
                 {
-                    player.State.Set("isPlaying", true, true);
+                    player.State.Set("isInRound", true, true);
                     player.State.Set("isSpectating", false, true);
 
                     player.TriggerEvent("CORE_CL_ROUND_STARTED");
@@ -47,7 +51,9 @@ namespace RoundManager.Server
                 Debug.WriteLine($"\u001b[41;37m[ERROR] {ex.Message}^7");
             }
         }
+        #endregion
 
+        #region Tick
         [Tick]
         internal async Task RoundTick()
         {
@@ -87,7 +93,7 @@ namespace RoundManager.Server
 
                 foreach (var player in players)
                 {
-                    if (player.State.Get("isPlaying") == true)
+                    if (player.State.Get("isInRound") == true)
                     {
                         continue;
                     }
@@ -97,13 +103,14 @@ namespace RoundManager.Server
                         continue;
                     }
 
-                    player.TriggerEvent("ROUNDMANAGER_CL_SPECTATE");
+                    if (player.State.Get("isConnected") == true)
+                    {
+                        player.State.Set("isInRound", false, true);
+                        player.State.Set("isSpectating", true, true);
 
-                    player.State.Set("isPlaying", false, true);
-                    player.State.Set("isSpectating", true, true);
+                        player.TriggerEvent("CORE_CL_ROUND_SPECTATE");
+                    }
                 }
-
-                return;
             }
 
             if (DateTime.Now >= this.round.EndTime)
@@ -120,5 +127,6 @@ namespace RoundManager.Server
                 return;
             }
         }
+        #endregion
     }
 }
