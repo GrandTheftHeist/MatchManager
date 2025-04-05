@@ -52,7 +52,11 @@
           "dependencies": {
             "CitizenFX.Core.Server": {
               "target": "Package",
-              "version": "[1.0.*, )"
+              "version": "[1.0.10230, )"
+            },
+            "Microsoft.CSharp": {
+              "target": "Package",
+              "version": "[4.7.0, )"
             },
             "NETStandard.Library": {
               "suppressParent": "All",

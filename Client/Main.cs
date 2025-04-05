@@ -1,12 +1,14 @@
+using System;
 using CitizenFX.Core;
+using CitizenFX.Core.Native;
 
 namespace RoundManager.Client
 {
-    public class Main : BaseScript
+    internal class Main : BaseScript
     {
         public Main()
         {
-            Debug.WriteLine("Hi from RoundManager.Client!");
+            TriggerServerEvent("ROUNDMANAGER_SV_CONNECTED", Game.Player.Handle);
         }
     }
 }

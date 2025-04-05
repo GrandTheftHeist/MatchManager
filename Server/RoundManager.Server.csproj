@@ -1,19 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-      <TargetFramework>netstandard2.0</TargetFramework>
-      <DebugType>portable</DebugType>
-      <TargetName>$(AssemblyName).net</TargetName>
-      <DefineConstants>SERVER</DefineConstants>
-    </PropertyGroup>
-  
-    <ItemGroup>
-      <PackageReference Include="CitizenFX.Core.Server" Version="1.0.*" />
-  
-      <Compile Include="../Shared/**/*.cs" />
-    </ItemGroup>
-  
-    <ItemGroup>
-      <Compile Remove="..\Shared\Dummy.cs" />
-    </ItemGroup>
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<DebugType>portable</DebugType>
+		<TargetName>$(AssemblyName).net</TargetName>
+		<DefineConstants>SERVER</DefineConstants>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CitizenFX.Core.Server" Version="1.0.10230" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+	</ItemGroup>
 </Project>
-  
