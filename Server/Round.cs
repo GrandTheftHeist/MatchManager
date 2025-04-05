@@ -9,11 +9,9 @@ namespace RoundManager.Server
     {
         private Round round;
 
-        #region Properties
         private Guid Id { get; set; }
         private DateTime StartTime { get; set; }
         private DateTime EndTime { get; set; }
-        #endregion
 
         public Round(Guid id, DateTime startTime, DateTime endTime)
         {
@@ -40,6 +38,8 @@ namespace RoundManager.Server
 
                 foreach (var player in Players)
                 {
+                    player.State.Set("endTime", endTime, true);
+
                     player.State.Set("isInRound", true, true);
                     player.State.Set("isSpectating", false, true);
 
@@ -72,7 +72,7 @@ namespace RoundManager.Server
                  * Set the new round as the current round.
                  */
 
-                this.CreateRound(DateTime.Now, DateTime.Now.AddMinutes(5));
+                this.CreateRound(DateTime.Now, DateTime.Now.AddMinutes(10));
                 return;
             }
 
@@ -100,6 +100,10 @@ namespace RoundManager.Server
 
                     if (player.State.Get("isSpectating") == true)
                     {
+                        Debug.WriteLine($"Player '{player.Name}' is spectating. Updated EndTime to '{round.EndTime}'.");
+
+                        player.State.Set("endTime", round.EndTime, true);
+
                         continue;
                     }
 
@@ -120,10 +124,24 @@ namespace RoundManager.Server
 
                 this.round = null;
 
+                foreach (uint ped in API.GetAllPeds())
+                {
+                    // If ped is not a player, skip it.
+                    if (!API.IsPedAPlayer((int)ped))
+                    {
+                        continue;
+                    }
+
+                    Debug.WriteLine($"Deleting ped '{ped}'.");
+
+                    API.DeleteEntity((int)ped);
+                }
+
+                TriggerEvent("BANK_SV_RESTART_BY_SERVER");
+
                 TriggerEvent("BANK_SV_DOOR_CLOSE_BY_SERVER", 0, 1);
                 TriggerEvent("BANK_SV_DOOR_CLOSE_BY_SERVER", 0, 2);
                 TriggerEvent("BANK_SV_DOOR_CLOSE_BY_SERVER", 0, 3);
-
                 return;
             }
         }
