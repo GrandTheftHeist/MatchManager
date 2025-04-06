@@ -1,6 +1,6 @@
 is_global = true
 build_property.RootNamespace = RoundManager.Client
-build_property.ProjectDir = C:\Users\leosk\source\repos\GrandTheftHeist\resources\roundmanager\Client\
+build_property.ProjectDir = C:\Users\leosk\source\repos\GrandTheftHeist\resources\RoundManager\Client\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.CsWinRTUseWindowsUIXamlProjections = false

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using CitizenFX.Core;
 using CitizenFX.Core.Native;
@@ -7,40 +8,37 @@ namespace RoundManager.Server
 {
     internal class Round : BaseScript
     {
-        private Round round;
-
+        private Round currentRound;
         private Guid Id { get; set; }
         private DateTime StartTime { get; set; }
         private DateTime EndTime { get; set; }
 
         public Round(Guid id, DateTime startTime, DateTime endTime)
         {
-            this.Id = id;
-            this.StartTime = startTime;
-            this.EndTime = endTime;
-            this.round = this;
+            Id = id;
+            StartTime = startTime;
+            EndTime = endTime;
+            currentRound = this;
 
-            Debug.WriteLine($"\u001b[44;37m[INFO] Round '{Id}' created. Start time '{StartTime}', end time '{EndTime}'^7");
+            Debug.WriteLine($"^5[INFO] Round '{Id}' created. Start time '{StartTime}' End time '{EndTime}'^7");
         }
 
-        #region Methods
         private void CreateRound(DateTime startTime, DateTime endTime)
         {
             try
             {
-                this.round = new Round(Guid.NewGuid(), startTime, endTime);
-
-                var players = Players;
-                if (players == null)
+                if (Players.Count() == 0)
                 {
+                    Debug.WriteLine($"^3[WARNING] No players online. Round not created.^7");
                     return;
                 }
+
+                currentRound = new Round(Guid.NewGuid(), startTime, endTime);
 
                 foreach (var player in Players)
                 {
                     player.State.Set("endTime", endTime, true);
-
-                    player.State.Set("isInRound", true, true);
+                    player.State.Set("isPlaying", true, true);
                     player.State.Set("isSpectating", false, true);
 
                     player.TriggerEvent("CORE_CL_ROUND_STARTED");
@@ -48,35 +46,27 @@ namespace RoundManager.Server
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"\u001b[41;37m[ERROR] {ex.Message}^7");
+                Debug.WriteLine($"^1[ERROR] in CreateRound. Reason: {ex.Message}^7");
             }
         }
-        #endregion
 
-        #region Tick
         [Tick]
         internal async Task RoundTick()
         {
             await Delay(1000);
 
-            var players = Players;
-            if (players == null)
+            if (Players.Count() == 0)
             {
                 return;
             }
 
-            if (this.round == null)
+            if (currentRound == null)
             {
-                /**
-                 * Create a new round.
-                 * Set the new round as the current round.
-                 */
-
-                this.CreateRound(DateTime.Now, DateTime.Now.AddMinutes(10));
+                CreateRound(DateTime.Now, DateTime.Now.AddMinutes(10));
                 return;
             }
 
-            if (DateTime.Now == this.round.StartTime)
+            if (DateTime.Now == currentRound.StartTime)
             {
                 /**
                  * Notify all teams that the round has started.
@@ -85,24 +75,20 @@ namespace RoundManager.Server
                 return;
             }
 
-            if (DateTime.Now < this.round.EndTime)
+            if (DateTime.Now < currentRound.EndTime)
             {
-                /**
-                 * Notify all citizens that the round is in progress.
-                 */
-
-                foreach (var player in players)
+                foreach (var player in Players)
                 {
-                    if (player.State.Get("isInRound") == true)
+                    if (player.State.Get("isPlaying") == true)
                     {
                         continue;
                     }
 
                     if (player.State.Get("isSpectating") == true)
                     {
-                        Debug.WriteLine($"Player '{player.Name}' is spectating. Updated EndTime to '{round.EndTime}'.");
+                        Debug.WriteLine($"Player '{player.Name}' is spectating. Updated EndTime to '{currentRound.EndTime}'");
 
-                        player.State.Set("endTime", round.EndTime, true);
+                        player.State.Set("endTime", currentRound.EndTime, true);
 
                         continue;
                     }
@@ -115,36 +101,34 @@ namespace RoundManager.Server
                         player.TriggerEvent("CORE_CL_ROUND_SPECTATE");
                     }
                 }
+
+                return;
             }
 
-            if (DateTime.Now >= this.round.EndTime)
+            if (DateTime.Now >= currentRound.EndTime)
             {
-                Debug.WriteLine($"\u001b[44;37m[INFO] Round '{this.Id}' ended.^7");
-                Debug.WriteLine("\u001b[44;37m[INFO] Selecting next round...^7");
+                Debug.WriteLine($"^5[INFO] Round '{Id}' ended.^7");
+                Debug.WriteLine($"^5[INFO] Starting next round...^7");
 
-                this.round = null;
+                currentRound = null;
 
                 foreach (uint ped in API.GetAllPeds())
                 {
-                    // If ped is not a player, skip it.
                     if (!API.IsPedAPlayer((int)ped))
                     {
                         continue;
                     }
 
-                    Debug.WriteLine($"Deleting ped '{ped}'.");
-
                     API.DeleteEntity((int)ped);
                 }
 
                 TriggerEvent("BANK_SV_RESTART_BY_SERVER");
-
                 TriggerEvent("BANK_SV_DOOR_CLOSE_BY_SERVER", 0, 1);
                 TriggerEvent("BANK_SV_DOOR_CLOSE_BY_SERVER", 0, 2);
                 TriggerEvent("BANK_SV_DOOR_CLOSE_BY_SERVER", 0, 3);
+
                 return;
             }
         }
-        #endregion
     }
 }
