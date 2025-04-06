@@ -5,9 +5,9 @@ namespace RoundManager.Server
 {
     internal class Round : BaseScript
     {
-        internal static Guid Id { get; set; }
-        internal static DateTime StartTime { get; set; }
-        internal static DateTime EndTime { get; set; }
+        internal static Guid Id;
+        internal static DateTime StartTime;
+        internal static DateTime EndTime;
 
         internal static void Create(Guid id, DateTime startTime, DateTime endTime)
         {
