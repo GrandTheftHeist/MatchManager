@@ -68,7 +68,7 @@ namespace RoundManager.Server
 
                 foreach (uint ped in API.GetAllPeds())
                 {
-                    if (!API.IsPedAPlayer((int)ped))
+                    if (API.IsPedAPlayer((int)ped))
                     {
                         continue;
                     }
