@@ -56,8 +56,6 @@ namespace RoundManager.Server
                         player.TriggerEvent("CORE_CL_ROUND_SPECTATE");
                     }
                 }
-
-                return;
             }
 
             if (DateTime.Now >= Round.EndTime)
