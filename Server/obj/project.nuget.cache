@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tKdSFuVkZ6c=",
+  "dgSpecHash": "NEFO0qq0zt4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\leosk\\source\\repos\\GrandTheftHeist\\resources\\RoundManager\\Server\\RoundManager.Server.csproj",
+  "projectFilePath": "C:\\Users\\leosk\\source\\repos\\GrandTheftHeist\\resources\\roundmanager\\Server\\RoundManager.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\leosk\\.nuget\\packages\\citizenfx.core.server\\1.0.10230\\citizenfx.core.server.1.0.10230.nupkg.sha512",
     "C:\\Users\\leosk\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

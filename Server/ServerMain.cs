@@ -26,8 +26,6 @@ namespace RoundManager.Server
 
             if (DateTime.Now < Round.EndTime)
             {
-                Debug.WriteLine($"^6[DEBUG] DateTime.Now < Round.EndTime...^7");
-
                 foreach (var player in Players)
                 {
                     if (player.State.Get("isPlaying") == true)

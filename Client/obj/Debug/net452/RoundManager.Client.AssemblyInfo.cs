@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RoundManager.Client")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c66b29fee23abaeef7d44f27b7404a5e0d67b3b3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dcc039afa5ca8e4d672096d5cc7b25ab64b1397f")]
 [assembly: System.Reflection.AssemblyProductAttribute("RoundManager.Client")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RoundManager.Client")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
