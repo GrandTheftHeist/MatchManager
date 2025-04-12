@@ -18,12 +18,6 @@ namespace RoundManager.Server
         {
             await Delay(1000);
 
-            if (Players.Count() == 0)
-            {
-                Debug.WriteLine($"^3[WARNING] No Players online.^7");
-                return;
-            }
-
             if (DateTime.Now < Round.EndTime)
             {
                 foreach (var player in Players)
@@ -73,11 +67,12 @@ namespace RoundManager.Server
                 }
 
                 TriggerEvent("BANK_SV_RESTART_BY_SERVER");
-                TriggerEvent("BANK_SV_DOOR_CLOSE_BY_SERVER", 0, 1);
-                TriggerEvent("BANK_SV_DOOR_CLOSE_BY_SERVER", 0, 2);
-                TriggerEvent("BANK_SV_DOOR_CLOSE_BY_SERVER", 0, 3);
 
-                Round.Create(Guid.NewGuid(), DateTime.Now, DateTime.Now.AddMinutes(10));
+                TriggerEvent("BANK_SV_DOOR_STATE", 0, 1, true);
+                TriggerEvent("BANK_SV_DOOR_STATE", 0, 2, true);
+                TriggerEvent("BANK_SV_DOOR_STATE", 0, 3, true);
+
+                Round.Create(Guid.NewGuid(), DateTime.Now, DateTime.Now.AddMinutes(5));
 
                 foreach (var player in Players)
                 {
