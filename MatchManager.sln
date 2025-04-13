@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96 d17.13
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{2CB42F12-E813-91B3-7D11-3220E40BEF4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoundManager.Client", "Client\RoundManager.Client.csproj", "{58DC9C3A-777B-4263-B5E9-D130AB0D7B58}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchManager.Client", "Client\MatchManager.Client.csproj", "{58DC9C3A-777B-4263-B5E9-D130AB0D7B58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoundManager.Server", "Server\RoundManager.Server.csproj", "{C29B3F61-FF95-4697-96F5-15C0EE5C8D7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchManager.Server", "Server\MatchManager.Server.csproj", "{C29B3F61-FF95-4697-96F5-15C0EE5C8D7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

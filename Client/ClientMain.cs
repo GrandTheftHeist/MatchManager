@@ -1,9 +1,8 @@
 using CitizenFX.Core;
 
-namespace RoundManager.Client
+namespace MatchManager.Client
 {
     internal class ClientMain : BaseScript
     {
-
     }
 }

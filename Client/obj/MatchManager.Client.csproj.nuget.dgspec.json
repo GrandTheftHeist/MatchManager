@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\leosk\\source\\repos\\MatchManager\\Client\\RoundManager.Client.csproj": {}
+    "C:\\Users\\leosk\\source\\repos\\MatchManager\\Client\\MatchManager.Client.csproj": {}
   },
   "projects": {
-    "C:\\Users\\leosk\\source\\repos\\MatchManager\\Client\\RoundManager.Client.csproj": {
+    "C:\\Users\\leosk\\source\\repos\\MatchManager\\Client\\MatchManager.Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\leosk\\source\\repos\\MatchManager\\Client\\RoundManager.Client.csproj",
-        "projectName": "RoundManager.Client",
-        "projectPath": "C:\\Users\\leosk\\source\\repos\\MatchManager\\Client\\RoundManager.Client.csproj",
+        "projectUniqueName": "C:\\Users\\leosk\\source\\repos\\MatchManager\\Client\\MatchManager.Client.csproj",
+        "projectName": "MatchManager.Client",
+        "projectPath": "C:\\Users\\leosk\\source\\repos\\MatchManager\\Client\\MatchManager.Client.csproj",
         "packagesPath": "C:\\Users\\leosk\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\leosk\\source\\repos\\MatchManager\\Client\\obj\\",
         "projectStyle": "PackageReference",

@@ -1,9 +1,9 @@
 ﻿using System;
 using CitizenFX.Core;
 
-namespace RoundManager.Server
+namespace MatchManager.Server
 {
-    internal class Round : BaseScript
+    internal static class Match
     {
         internal static Guid Id;
         internal static DateTime StartTime;
@@ -15,7 +15,7 @@ namespace RoundManager.Server
             StartTime = startTime;
             EndTime = endTime;
 
-            Debug.WriteLine($"^5[INFO] Round '{Id}' created. Start time '{StartTime}' End time '{EndTime}'^7");
+            Debug.WriteLine($"^5[INFO] Match '{Id}' created. Start time '{StartTime}' End time '{EndTime}'^7");
         }
     }
 }
