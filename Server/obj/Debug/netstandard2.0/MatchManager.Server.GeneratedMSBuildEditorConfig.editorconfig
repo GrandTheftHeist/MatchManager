@@ -1,6 +1,6 @@
 is_global = true
 build_property.RootNamespace = MatchManager.Server
-build_property.ProjectDir = C:\Users\leosk\source\repos\MatchManager\Server\
+build_property.ProjectDir = C:\Users\leosk\source\repos\GrandTheftHeist\resources\roundmanager\Server\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.CsWinRTUseWindowsUIXamlProjections = false

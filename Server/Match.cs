@@ -15,7 +15,7 @@ namespace MatchManager.Server
             StartTime = startTime;
             EndTime = endTime;
 
-            Debug.WriteLine($"^5[INFO] Match '{Id}' created. Start time '{StartTime}' End time '{EndTime}'^7");
+            Debug.WriteLine($"^5[INFO] Match '{Id}' has been created. Start time '{StartTime}' End time '{EndTime}'^7");
         }
     }
 }
