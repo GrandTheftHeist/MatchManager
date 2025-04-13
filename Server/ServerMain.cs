@@ -34,7 +34,6 @@ namespace MatchManager.Server
                     {
                         player.State.Set("isPlaying", false, true);
                         player.State.Set("isSpectating", true, true);
-                        player.TriggerEvent("CORE_CL_MATCH_SPECTATE");
                     }
                 }
             }
