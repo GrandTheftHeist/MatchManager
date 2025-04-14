@@ -50,12 +50,14 @@ namespace MatchManager.Server
         internal static DateTime EndTime;
         internal static List<GoldTrolley> GoldTrolleys = new List<GoldTrolley>();
         internal static List<Object> Objects = new List<Object>();
+        internal static int StolenGoldTrolleys = 0;
 
         internal static void Create(Guid id, DateTime startTime, DateTime endTime)
         {
             Id = id;
             StartTime = startTime;
             EndTime = endTime;
+            StolenGoldTrolleys = 0;
 
             DeleteExistingGoldTrolleys();
             DeleteExistingObjects();
