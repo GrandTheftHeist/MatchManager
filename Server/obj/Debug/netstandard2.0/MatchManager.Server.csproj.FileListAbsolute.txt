@@ -16,3 +16,12 @@ C:\Users\leosk\source\repos\GrandTheftHeist\resources\roundmanager\Server\obj\De
 C:\Users\leosk\source\repos\GrandTheftHeist\resources\roundmanager\Server\obj\Debug\netstandard2.0\MatchManager.Server.sourcelink.json
 C:\Users\leosk\source\repos\GrandTheftHeist\resources\roundmanager\Server\obj\Debug\netstandard2.0\MatchManager.Server.net.dll
 C:\Users\leosk\source\repos\GrandTheftHeist\resources\roundmanager\Server\obj\Debug\netstandard2.0\MatchManager.Server.net.pdb
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\MatchManager\Server\bin\Debug\netstandard2.0\MatchManager.Server.deps.json
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\MatchManager\Server\bin\Debug\netstandard2.0\MatchManager.Server.net.dll
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\MatchManager\Server\bin\Debug\netstandard2.0\MatchManager.Server.net.pdb
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\MatchManager\Server\obj\Debug\netstandard2.0\MatchManager.Server.csproj.AssemblyReference.cache
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\MatchManager\Server\obj\Debug\netstandard2.0\MatchManager.Server.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\MatchManager\Server\obj\Debug\netstandard2.0\MatchManager.Server.csproj.CoreCompileInputs.cache
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\MatchManager\Server\obj\Debug\netstandard2.0\MatchManager.Server.sourcelink.json
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\MatchManager\Server\obj\Debug\netstandard2.0\MatchManager.Server.net.dll
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\MatchManager\Server\obj\Debug\netstandard2.0\MatchManager.Server.net.pdb
