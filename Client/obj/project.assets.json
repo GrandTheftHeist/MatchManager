@@ -390,11 +390,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\leosk\\source\\repos\\GrandTheftHeist\\resources\\roundmanager\\Client\\MatchManager.Client.csproj",
+      "projectUniqueName": "C:\\Users\\leosk\\source\\repos\\GrandTheftHeist\\resources\\MatchManager\\Client\\MatchManager.Client.csproj",
       "projectName": "MatchManager.Client",
-      "projectPath": "C:\\Users\\leosk\\source\\repos\\GrandTheftHeist\\resources\\roundmanager\\Client\\MatchManager.Client.csproj",
+      "projectPath": "C:\\Users\\leosk\\source\\repos\\GrandTheftHeist\\resources\\MatchManager\\Client\\MatchManager.Client.csproj",
       "packagesPath": "C:\\Users\\leosk\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\leosk\\source\\repos\\GrandTheftHeist\\resources\\roundmanager\\Client\\obj\\",
+      "outputPath": "C:\\Users\\leosk\\source\\repos\\GrandTheftHeist\\resources\\MatchManager\\Client\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

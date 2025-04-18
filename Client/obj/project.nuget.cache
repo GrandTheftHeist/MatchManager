@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TLEPefTifVw=",
+  "dgSpecHash": "s9OkQhNRmOk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\leosk\\source\\repos\\GrandTheftHeist\\resources\\roundmanager\\Client\\MatchManager.Client.csproj",
+  "projectFilePath": "C:\\Users\\leosk\\source\\repos\\GrandTheftHeist\\resources\\MatchManager\\Client\\MatchManager.Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\leosk\\.nuget\\packages\\citizenfx.core.client\\1.0.10230\\citizenfx.core.client.1.0.10230.nupkg.sha512",
     "C:\\Users\\leosk\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.3\\microsoft.netframework.referenceassemblies.1.0.3.nupkg.sha512",

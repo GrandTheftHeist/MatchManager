@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MatchManager.Client")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1c725b2e01efc2d71acb6bbd1332728ff02c2cbc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dca016f51102309eb24cd914ffb3c2305edb4f52")]
 [assembly: System.Reflection.AssemblyProductAttribute("MatchManager.Client")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MatchManager.Client")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

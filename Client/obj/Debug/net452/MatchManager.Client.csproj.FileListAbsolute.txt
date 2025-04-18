@@ -18,3 +18,13 @@ C:\Users\leosk\source\repos\GrandTheftHeist\resources\roundmanager\Client\obj\De
 C:\Users\leosk\source\repos\GrandTheftHeist\resources\roundmanager\Client\obj\Debug\net452\MatchManager.Client.sourcelink.json
 C:\Users\leosk\source\repos\GrandTheftHeist\resources\roundmanager\Client\obj\Debug\net452\MatchMan.EAA05730.Up2Date
 C:\Users\leosk\source\repos\GrandTheftHeist\resources\roundmanager\Client\obj\Debug\net452\MatchManager.Client.net.dll
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\MatchManager\Client\bin\Debug\net452\MatchManager.Client.net.dll
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\MatchManager\Client\bin\Debug\net452\CitizenFX.Core.Client.dll
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\MatchManager\Client\obj\Debug\net452\MatchManager.Client.csproj.AssemblyReference.cache
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\MatchManager\Client\obj\Debug\net452\MatchManager.Client.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\MatchManager\Client\obj\Debug\net452\MatchManager.Client.AssemblyInfoInputs.cache
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\MatchManager\Client\obj\Debug\net452\MatchManager.Client.AssemblyInfo.cs
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\MatchManager\Client\obj\Debug\net452\MatchManager.Client.csproj.CoreCompileInputs.cache
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\MatchManager\Client\obj\Debug\net452\MatchManager.Client.sourcelink.json
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\MatchManager\Client\obj\Debug\net452\MatchMan.EAA05730.Up2Date
+C:\Users\leosk\source\repos\GrandTheftHeist\resources\MatchManager\Client\obj\Debug\net452\MatchManager.Client.net.dll
